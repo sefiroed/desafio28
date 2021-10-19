@@ -3,6 +3,7 @@ import { isLoggedIn } from '../middlewares/auth';
 import passport from '../middlewares/auth';
 import UserRouter from './user';
 import ProductoRouter from './productosvistafake'
+import { nCPU } from '../index';
 
 
 const router = Router();
@@ -74,6 +75,20 @@ router.get('/datos', (req, res) => {
   } else {
     res.redirect('/api/login');
   }
+});
+
+router.get('/info', (req, res) => {
+  console.log(process);
+  res.json({
+    "argumentos": process.argv,
+    "OS": process.platform,
+    "Node Version": process.version,
+    "Memory": process.memoryUsage,
+    "Path": process.execPath,
+    "PID": process.pid,
+    "NumCPU": nCPU
+  })
+
 });
 
 export default router;
