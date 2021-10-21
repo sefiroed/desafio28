@@ -14,3 +14,6 @@ export interface Mensaje {
     text: any;
 }
 
+export interface IObject {
+    [key: string]: string | number | boolean | unknown;
+}
